@@ -1,11 +1,11 @@
 <?php
 
-namespace Tinderbox\ClickhouseBuilder\Query;
+namespace Ywnsyage\ClickhouseBuilder\Query;
 
 use Closure;
-use Tinderbox\ClickhouseBuilder\Query\Enums\JoinStrict;
-use Tinderbox\ClickhouseBuilder\Query\Enums\JoinType;
-use Tinderbox\ClickhouseBuilder\Query\Enums\Operator;
+use Ywnsyage\ClickhouseBuilder\Query\Enums\JoinStrict;
+use Ywnsyage\ClickhouseBuilder\Query\Enums\JoinType;
+use Ywnsyage\ClickhouseBuilder\Query\Enums\Operator;
 
 class JoinClause
 {

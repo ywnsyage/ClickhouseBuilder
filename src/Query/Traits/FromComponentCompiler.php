@@ -1,10 +1,10 @@
 <?php
 
-namespace Tinderbox\ClickhouseBuilder\Query\Traits;
+namespace Ywnsyage\ClickhouseBuilder\Query\Traits;
 
-use Tinderbox\ClickhouseBuilder\Exceptions\GrammarException;
-use Tinderbox\ClickhouseBuilder\Query\BaseBuilder;
-use Tinderbox\ClickhouseBuilder\Query\From;
+use Ywnsyage\ClickhouseBuilder\Exceptions\GrammarException;
+use Ywnsyage\ClickhouseBuilder\Query\BaseBuilder;
+use Ywnsyage\ClickhouseBuilder\Query\From;
 
 trait FromComponentCompiler
 {

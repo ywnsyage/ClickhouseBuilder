@@ -1,14 +1,14 @@
 <?php
 
-namespace Tinderbox\ClickhouseBuilder;
+namespace Ywnsyage\ClickhouseBuilder;
 
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery as m;
 use PHPUnit\Framework\TestCase;
-use Tinderbox\Clickhouse\Client;
-use Tinderbox\ClickhouseBuilder\Query\Builder;
-use Tinderbox\ClickhouseBuilder\Query\Enums\Operator;
-use Tinderbox\ClickhouseBuilder\Query\TwoElementsLogicExpression;
+use Ywnsyage\Clickhouse\Client;
+use Ywnsyage\ClickhouseBuilder\Query\Builder;
+use Ywnsyage\ClickhouseBuilder\Query\Enums\Operator;
+use Ywnsyage\ClickhouseBuilder\Query\TwoElementsLogicExpression;
 
 class TwoElementsLogicExpressionTest extends TestCase
 {

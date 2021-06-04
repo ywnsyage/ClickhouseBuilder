@@ -1,20 +1,20 @@
 <?php
 
-namespace Tinderbox\ClickhouseBuilder;
+namespace Ywnsyage\ClickhouseBuilder;
 
 use PHPUnit\Framework\TestCase;
-use Tinderbox\Clickhouse\Client;
-use Tinderbox\Clickhouse\Common\File;
-use Tinderbox\Clickhouse\Common\FileFromString;
-use Tinderbox\Clickhouse\Common\Format;
-use Tinderbox\Clickhouse\Common\TempTable;
-use Tinderbox\Clickhouse\Interfaces\FileInterface;
-use Tinderbox\Clickhouse\Server;
-use Tinderbox\Clickhouse\ServerProvider;
-use Tinderbox\ClickhouseBuilder\Exceptions\BuilderException;
-use Tinderbox\ClickhouseBuilder\Query\Builder;
-use Tinderbox\ClickhouseBuilder\Query\Expression;
-use Tinderbox\ClickhouseBuilder\Query\Identifier;
+use Ywnsyage\Clickhouse\Client;
+use Ywnsyage\Clickhouse\Common\File;
+use Ywnsyage\Clickhouse\Common\FileFromString;
+use Ywnsyage\Clickhouse\Common\Format;
+use Ywnsyage\Clickhouse\Common\TempTable;
+use Ywnsyage\Clickhouse\Interfaces\FileInterface;
+use Ywnsyage\Clickhouse\Server;
+use Ywnsyage\Clickhouse\ServerProvider;
+use Ywnsyage\ClickhouseBuilder\Exceptions\BuilderException;
+use Ywnsyage\ClickhouseBuilder\Query\Builder;
+use Ywnsyage\ClickhouseBuilder\Query\Expression;
+use Ywnsyage\ClickhouseBuilder\Query\Identifier;
 
 class FunctionsTest extends TestCase
 {

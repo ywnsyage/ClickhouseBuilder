@@ -10,17 +10,17 @@
 Via composer
 
 ```bash
-composer require the-tinderbox/clickhouse-builder
+composer require ywnsyage/clickhouse-builder
 ```
 
 # Usage
-For working query builder we must previously instantiate and pass in constructor `the-tinderbox/clickhouse-php-client`.
+For working query builder we must previously instantiate and pass in constructor `ywnsyage/clickhouse-php-client`.
 
 ```php
-$server = new Tinderbox\Clickhouse\Server('127.0.0.1', '8123', 'default', 'user', 'pass');
-$serverProvider = (new Tinderbox\Clickhouse\ServerProvider())->addServer($server);
+$server = new Ywnsyage\Clickhouse\Server('127.0.0.1', '8123', 'default', 'user', 'pass');
+$serverProvider = (new Ywnsyage\Clickhouse\ServerProvider())->addServer($server);
 
-$client = new Tinderbox\Clickhouse\Client($serverProvider);
+$client = new Ywnsyage\Clickhouse\Client($serverProvider);
 $builder = new Builder($client);
 ```
 After that we can build and perform sql queries.
@@ -463,7 +463,7 @@ In `config/app.php` add:
 ```php
     'providers' => [
         ...
-        \Tinderbox\ClickhouseBuilder\Integrations\Laravel\ClickhouseServiceProvider::class,
+        \Ywnsyage\ClickhouseBuilder\Integrations\Laravel\ClickhouseServiceProvider::class,
         ...
     ]
 ```
@@ -473,7 +473,7 @@ In `config/app.php` add:
 In `bootstrap/app.php` add:
 
 ```php
-$app->register(\Tinderbox\ClickhouseBuilder\Integrations\Laravel\ClickhouseServiceProvider::class);
+$app->register(\Ywnsyage\ClickhouseBuilder\Integrations\Laravel\ClickhouseServiceProvider::class);
 ```
 
 Connection configures via `config/database.php`.

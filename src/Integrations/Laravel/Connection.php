@@ -1,19 +1,20 @@
 <?php
 
-namespace Tinderbox\ClickhouseBuilder\Integrations\Laravel;
+namespace Ywnsyage\ClickhouseBuilder\Integrations\Laravel;
 
-use Tinderbox\Clickhouse\Client;
-use Tinderbox\Clickhouse\Cluster;
-use Tinderbox\Clickhouse\Common\ServerOptions;
-use Tinderbox\Clickhouse\Interfaces\TransportInterface;
-use Tinderbox\Clickhouse\Query;
-use Tinderbox\Clickhouse\Server;
-use Tinderbox\Clickhouse\ServerProvider;
-use Tinderbox\Clickhouse\Transport\HttpTransport;
-use Tinderbox\ClickhouseBuilder\Exceptions\BuilderException;
-use Tinderbox\ClickhouseBuilder\Exceptions\NotSupportedException;
-use Tinderbox\ClickhouseBuilder\Query\Enums\Format;
-use Tinderbox\ClickhouseBuilder\Query\Expression;
+use Ywnsyage\Clickhouse\Client;
+use Ywnsyage\Clickhouse\Cluster;
+use Ywnsyage\Clickhouse\Common\ServerOptions;
+use Ywnsyage\Clickhouse\Interfaces\TransportInterface;
+use Ywnsyage\Clickhouse\Query;
+use Ywnsyage\Clickhouse\Server;
+use Ywnsyage\Clickhouse\ServerProvider;
+use Ywnsyage\Clickhouse\Transport\HttpTransport;
+use Ywnsyage\Clickhouse\Transport\MysqlTransport;
+use Ywnsyage\ClickhouseBuilder\Exceptions\BuilderException;
+use Ywnsyage\ClickhouseBuilder\Exceptions\NotSupportedException;
+use Ywnsyage\ClickhouseBuilder\Query\Enums\Format;
+use Ywnsyage\ClickhouseBuilder\Query\Expression;
 
 class Connection extends \Illuminate\Database\Connection
 {
@@ -62,7 +63,7 @@ class Connection extends \Illuminate\Database\Connection
     /**
      * Last executed query statistic.
      *
-     * @var \Tinderbox\Clickhouse\Query\QueryStatistic
+     * @var \Ywnsyage\Clickhouse\Query\QueryStatistic
      */
     protected $lastQueryStatistic;
 
@@ -73,8 +74,8 @@ class Connection extends \Illuminate\Database\Connection
      *
      * @param array $config
      *
-     * @throws \Tinderbox\Clickhouse\Exceptions\ClusterException
-     * @throws \Tinderbox\Clickhouse\Exceptions\ServerProviderException
+     * @throws \Ywnsyage\Clickhouse\Exceptions\ClusterException
+     * @throws \Ywnsyage\Clickhouse\Exceptions\ServerProviderException
      */
     public function __construct(array $config)
     {
@@ -105,9 +106,9 @@ class Connection extends \Illuminate\Database\Connection
     /**
      * Returns statistic for last query.
      *
-     * @throws \Tinderbox\ClickhouseBuilder\Exceptions\BuilderException
+     * @throws \Ywnsyage\ClickhouseBuilder\Exceptions\BuilderException
      *
-     * @return array|\Tinderbox\Clickhouse\Query\QueryStatistic
+     * @return array|\Ywnsyage\Clickhouse\Query\QueryStatistic
      */
     public function getLastQueryStatistic()
     {
@@ -121,7 +122,7 @@ class Connection extends \Illuminate\Database\Connection
     /**
      * Sets last query statistic.
      *
-     * @param array|\Tinderbox\Clickhouse\Query\QueryStatistic $queryStatistic
+     * @param array|\Ywnsyage\Clickhouse\Query\QueryStatistic $queryStatistic
      */
     protected function setLastQueryStatistic($queryStatistic)
     {
@@ -146,7 +147,7 @@ class Connection extends \Illuminate\Database\Connection
      *
      * @param array $options
      *
-     * @return \Tinderbox\Clickhouse\Interfaces\TransportInterface
+     * @return \Ywnsyage\Clickhouse\Interfaces\TransportInterface
      */
     protected function createTransport(array $options): TransportInterface
     {
@@ -154,7 +155,7 @@ class Connection extends \Illuminate\Database\Connection
 
         unset($options['client']);
 
-        return new HttpTransport($client, $options);
+        return new MysqlTransport($client, $options);
     }
 
     /**
@@ -162,8 +163,8 @@ class Connection extends \Illuminate\Database\Connection
      *
      * @param array $config
      *
-     * @throws \Tinderbox\Clickhouse\Exceptions\ClusterException
-     * @throws \Tinderbox\Clickhouse\Exceptions\ServerProviderException
+     * @throws \Ywnsyage\Clickhouse\Exceptions\ClusterException
+     * @throws \Ywnsyage\Clickhouse\Exceptions\ServerProviderException
      *
      * @return ServerProvider
      */
@@ -245,7 +246,7 @@ class Connection extends \Illuminate\Database\Connection
     /**
      * Get a new query builder instance.
      *
-     * @return \Tinderbox\ClickhouseBuilder\Integrations\Laravel\Builder
+     * @return \Ywnsyage\ClickhouseBuilder\Integrations\Laravel\Builder
      */
     public function query()
     {
@@ -258,7 +259,7 @@ class Connection extends \Illuminate\Database\Connection
      * @param \Closure|Builder|string $table
      * @param string|null             $as
      *
-     * @return \Tinderbox\ClickhouseBuilder\Integrations\Laravel\Builder
+     * @return \Ywnsyage\ClickhouseBuilder\Integrations\Laravel\Builder
      */
     public function table($table, $as = null)
     {
@@ -324,6 +325,11 @@ class Connection extends \Illuminate\Database\Connection
      */
     public function select($query, $bindings = [], $tables = [])
     {
+        /*print_r([
+            'query' => $query,
+            'bindings' => $bindings,
+            'tables' => $tables
+        ]);*/
         $result = $this->getClient()->readOne($query, $tables);
 
         $this->logQuery($result->getQuery()->getQuery(), [], $result->getStatistic()->getTime());
@@ -352,7 +358,7 @@ class Connection extends \Illuminate\Database\Connection
         $statistic = [];
 
         foreach ($results as $i => $result) {
-            /* @var \Tinderbox\Clickhouse\Query\Result $result */
+            /* @var \Ywnsyage\Clickhouse\Query\Result $result */
             /* @var Query $query */
             $query = $result->getQuery();
 
@@ -544,7 +550,7 @@ class Connection extends \Illuminate\Database\Connection
      *
      * @param string $hostname
      *
-     * @return \Tinderbox\ClickhouseBuilder\Integrations\Laravel\Connection
+     * @return \Ywnsyage\ClickhouseBuilder\Integrations\Laravel\Connection
      */
     public function using(string $hostname): self
     {

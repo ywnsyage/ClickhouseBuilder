@@ -1,25 +1,25 @@
 <?php
 
-namespace Tinderbox\ClickhouseBuilder\Query;
+namespace Ywnsyage\ClickhouseBuilder\Query;
 
-use Tinderbox\ClickhouseBuilder\Exceptions\GrammarException;
-use Tinderbox\ClickhouseBuilder\Query\Enums\Format;
-use Tinderbox\ClickhouseBuilder\Query\Traits\ArrayJoinComponentCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\ColumnsComponentCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\FormatComponentCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\FromComponentCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\GroupsComponentCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\HavingsComponentCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\JoinComponentCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\LimitByComponentCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\LimitComponentCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\OrdersComponentCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\PreWheresComponentCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\SampleComponentCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\TupleCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\TwoElementsLogicExpressionsCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\UnionsComponentCompiler;
-use Tinderbox\ClickhouseBuilder\Query\Traits\WheresComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Exceptions\GrammarException;
+use Ywnsyage\ClickhouseBuilder\Query\Enums\Format;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\ArrayJoinComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\ColumnsComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\FormatComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\FromComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\GroupsComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\HavingsComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\JoinComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\LimitByComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\LimitComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\OrdersComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\PreWheresComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\SampleComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\TupleCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\TwoElementsLogicExpressionsCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\UnionsComponentCompiler;
+use Ywnsyage\ClickhouseBuilder\Query\Traits\WheresComponentCompiler;
 
 class Grammar
 {

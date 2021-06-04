@@ -1,6 +1,6 @@
 <?php
 
-namespace Tinderbox\ClickhouseBuilder\Exceptions;
+namespace Ywnsyage\ClickhouseBuilder\Exceptions;
 
 class NotSupportedException extends Exception
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Tinderbox\ClickhouseBuilder\Query;
+namespace Ywnsyage\ClickhouseBuilder\Query;
 
-use Tinderbox\ClickhouseBuilder\Query\Enums\Operator;
+use Ywnsyage\ClickhouseBuilder\Query\Enums\Operator;
 
 class TwoElementsLogicExpression
 {

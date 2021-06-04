@@ -1,9 +1,9 @@
 <?php
 
-namespace Tinderbox\ClickhouseBuilder;
+namespace Ywnsyage\ClickhouseBuilder;
 
 use PHPUnit\Framework\TestCase;
-use Tinderbox\ClickhouseBuilder\Query\Limit;
+use Ywnsyage\ClickhouseBuilder\Query\Limit;
 
 class LimitTest extends TestCase
 {

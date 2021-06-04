@@ -1,15 +1,15 @@
 <?php
 
-namespace Tinderbox\ClickhouseBuilder\Integrations\Laravel;
+namespace Ywnsyage\ClickhouseBuilder\Integrations\Laravel;
 
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Traits\Macroable;
-use Tinderbox\Clickhouse\Common\Format;
-use Tinderbox\Clickhouse\Query;
-use Tinderbox\Clickhouse\Query\QueryStatistic;
-use Tinderbox\ClickhouseBuilder\Query\BaseBuilder;
-use Tinderbox\ClickhouseBuilder\Query\Expression;
-use Tinderbox\ClickhouseBuilder\Query\Grammar;
+use Ywnsyage\Clickhouse\Common\Format;
+use Ywnsyage\Clickhouse\Query;
+use Ywnsyage\Clickhouse\Query\QueryStatistic;
+use Ywnsyage\ClickhouseBuilder\Query\BaseBuilder;
+use Ywnsyage\ClickhouseBuilder\Query\Expression;
+use Ywnsyage\ClickhouseBuilder\Query\Grammar;
 
 class Builder extends BaseBuilder
 {
@@ -20,14 +20,14 @@ class Builder extends BaseBuilder
     /**
      * Connection which is used to perform queries.
      *
-     * @var \Tinderbox\ClickhouseBuilder\Integrations\Laravel\Connection
+     * @var \Ywnsyage\ClickhouseBuilder\Integrations\Laravel\Connection
      */
     protected $connection;
 
     /**
      * Builder constructor.
      *
-     * @param \Tinderbox\ClickhouseBuilder\Integrations\Laravel\Connection $connection
+     * @param \Ywnsyage\ClickhouseBuilder\Integrations\Laravel\Connection $connection
      */
     public function __construct(Connection $connection)
     {
@@ -38,9 +38,9 @@ class Builder extends BaseBuilder
     /**
      * Perform compiled from builder sql query and getting result.
      *
-     * @throws \Tinderbox\Clickhouse\Exceptions\ClientException
+     * @throws \Ywnsyage\Clickhouse\Exceptions\ClientException
      *
-     * @return \Tinderbox\Clickhouse\Query\Result|\Tinderbox\Clickhouse\Query\Result[]
+     * @return \Ywnsyage\Clickhouse\Query\Result|\Ywnsyage\Clickhouse\Query\Result[]
      */
     public function get()
     {
@@ -67,7 +67,7 @@ class Builder extends BaseBuilder
      * Performs compiled sql for count rows only. May be used for pagination
      * Works only without async queries.
      *
-     * @throws \Tinderbox\Clickhouse\Exceptions\ClientException
+     * @throws \Ywnsyage\Clickhouse\Exceptions\ClientException
      *
      * @return int|mixed
      */
@@ -86,9 +86,9 @@ class Builder extends BaseBuilder
     /**
      * Perform query and get first row.
      *
-     * @throws \Tinderbox\Clickhouse\Exceptions\ClientException
+     * @throws \Ywnsyage\Clickhouse\Exceptions\ClientException
      *
-     * @return mixed|null|\Tinderbox\Clickhouse\Query\Result
+     * @return mixed|null|\Ywnsyage\Clickhouse\Query\Result
      */
     public function first()
     {
@@ -126,7 +126,7 @@ class Builder extends BaseBuilder
      * Insert in table data from files.
      *
      * @param array                                                 $columns
-     * @param string|\Tinderbox\Clickhouse\Interfaces\FileInterface $file
+     * @param string|\Ywnsyage\Clickhouse\Interfaces\FileInterface $file
      * @param string                                                $format
      *
      * @return bool
@@ -146,7 +146,7 @@ class Builder extends BaseBuilder
      * @param array $values
      * @param bool  $skipSort
      *
-     * @throws \Tinderbox\ClickhouseBuilder\Exceptions\GrammarException
+     * @throws \Ywnsyage\ClickhouseBuilder\Exceptions\GrammarException
      *
      * @return bool
      */
@@ -176,7 +176,7 @@ class Builder extends BaseBuilder
     /**
      * Performs ALTER TABLE `table` DELETE query.
      *
-     * @throws \Tinderbox\ClickhouseBuilder\Exceptions\GrammarException
+     * @throws \Ywnsyage\ClickhouseBuilder\Exceptions\GrammarException
      *
      * @return int
      */
@@ -191,7 +191,7 @@ class Builder extends BaseBuilder
      * @param int $page
      * @param int $perPage
      *
-     * @throws \Tinderbox\Clickhouse\Exceptions\ClientException
+     * @throws \Ywnsyage\Clickhouse\Exceptions\ClientException
      *
      * @return LengthAwarePaginator
      */
@@ -215,7 +215,7 @@ class Builder extends BaseBuilder
     /**
      * Get last query statistics from the connection.
      *
-     * @throws \Tinderbox\ClickhouseBuilder\Exceptions\BuilderException
+     * @throws \Ywnsyage\ClickhouseBuilder\Exceptions\BuilderException
      *
      * @return QueryStatistic
      */

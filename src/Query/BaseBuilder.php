@@ -1,17 +1,17 @@
 <?php
 
-namespace Tinderbox\ClickhouseBuilder\Query;
+namespace Ywnsyage\ClickhouseBuilder\Query;
 
 use Closure;
-use Tinderbox\Clickhouse\Common\File;
-use Tinderbox\Clickhouse\Common\FileFromString;
-use Tinderbox\Clickhouse\Common\TempTable;
-use Tinderbox\Clickhouse\Interfaces\FileInterface;
-use Tinderbox\ClickhouseBuilder\Query\Enums\Format;
-use Tinderbox\ClickhouseBuilder\Query\Enums\JoinStrict;
-use Tinderbox\ClickhouseBuilder\Query\Enums\JoinType;
-use Tinderbox\ClickhouseBuilder\Query\Enums\Operator;
-use Tinderbox\ClickhouseBuilder\Query\Enums\OrderDirection;
+use Ywnsyage\Clickhouse\Common\File;
+use Ywnsyage\Clickhouse\Common\FileFromString;
+use Ywnsyage\Clickhouse\Common\TempTable;
+use Ywnsyage\Clickhouse\Interfaces\FileInterface;
+use Ywnsyage\ClickhouseBuilder\Query\Enums\Format;
+use Ywnsyage\ClickhouseBuilder\Query\Enums\JoinStrict;
+use Ywnsyage\ClickhouseBuilder\Query\Enums\JoinType;
+use Ywnsyage\ClickhouseBuilder\Query\Enums\Operator;
+use Ywnsyage\ClickhouseBuilder\Query\Enums\OrderDirection;
 
 abstract class BaseBuilder
 {
