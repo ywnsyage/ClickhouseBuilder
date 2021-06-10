@@ -436,7 +436,7 @@ class Connection extends \Illuminate\Database\Connection
 
         $result = $this->getClient()->writeOne($query);
 
-        $this->logQuery($query, $bindings, microtime(true) - $startTime);
+        $this->logQuery($query, $bindings, floatval(bcsub(microtime(true), $startTime, 3)));
 
         return $result;
     }
