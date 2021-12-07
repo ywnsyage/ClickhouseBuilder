@@ -1059,12 +1059,16 @@ class BuilderTest extends TestCase
 
         $builder->newQuery()->table('test')->insertFile(['number'], new FileFromString('0'.PHP_EOL.'1'.PHP_EOL.'2'));
 
+        $result = $builder->newQuery()->table('test')->count();
+
+        $this->assertEquals(3, $result);
+
+        $builder->newQuery()->table('test')->where('number', '=', 1)->delete();
+
         /*
          * We have to sleep for 3 seconds while mutation in progress
          */
         sleep(3);
-
-        $builder->newQuery()->table('test')->where('number', '=', 1)->delete();
 
         $result = $builder->newQuery()->table('test')->count();
 
@@ -1110,6 +1114,14 @@ class BuilderTest extends TestCase
         $builder->table('test')->arrayJoin('someArr');
 
         $this->assertEquals('SELECT * FROM `test` ARRAY JOIN `someArr`', $builder->toSql());
+    }
+
+    public function testLeftArrayJoin()
+    {
+        $builder = $this->getBuilder();
+        $builder->table('test')->leftArrayJoin('someArr');
+
+        $this->assertEquals('SELECT * FROM `test` LEFT ARRAY JOIN `someArr`', $builder->toSql());
     }
 
     public function testAddFile()
@@ -1171,6 +1183,12 @@ class BuilderTest extends TestCase
             $join->table('table2')->on('column_from_table_1', '=', 'column_from_table_2');
         });
         $this->assertEquals('SELECT * FROM `table1` ANY LEFT JOIN `table2` ON `column_from_table_1` = `column_from_table_2`', $builder->toSql());
+
+        $builder = $this->getBuilder();
+        $builder->from('table1')->anyLeftJoin(function (JoinClause $join) {
+            $join->table('table2')->on('column_from_table_1', '=', raw('toUInt32(`column_from_table_2`)'));
+        });
+        $this->assertEquals('SELECT * FROM `table1` ANY LEFT JOIN `table2` ON `column_from_table_1` = toUInt32(`column_from_table_2`)', $builder->toSql());
     }
 
     public function testMultipleJoins()
