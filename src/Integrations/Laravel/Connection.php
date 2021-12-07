@@ -151,10 +151,12 @@ class Connection extends \Illuminate\Database\Connection
      */
     protected function createTransport(array $options): TransportInterface
     {
+        $type = $options['type'] ?? null;
         $client = $options['client'] ?? null;
-
-        unset($options['client']);
-
+        unset($options['client'], $options['type']);
+        if($type == 'http'){
+            return new HttpTransport($client, $options);
+        }
         return new MysqlTransport($client, $options);
     }
 
